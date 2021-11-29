@@ -17,12 +17,12 @@ const useFetch = (url) => {
         fetch(url)
         .then(resp => resp.json())
         .then(data=>{
-            setTimeout(()=>{
+
                 if(isMounted.current){
                     setState({data:data, loading:false, error:null})
                 }
 
-            },4000)
+           
         })
     },[url])
 

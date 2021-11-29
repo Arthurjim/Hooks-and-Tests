@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import RealExampleRefs from "./components/04-useRef/RealExampleRefs";
+import LayoutEffect from "./components/05-useLayoutEffect/LayoutEffect";
+// import RealExampleRefs from "./components/04-useRef/RealExampleRefs";
 // import FocusScreen from "./components/04-useRef/FocusScreen";
 // import MultipleCustomHooks from "./components/03-examples/MultipleCustomHooks";
 // import FormWithCustomHook from "./components/02-useEffect/FormWithCustomHook";
@@ -10,6 +11,6 @@ import RealExampleRefs from "./components/04-useRef/RealExampleRefs";
 // import HookApp from "./HookApp";
 
 ReactDOM.render(
-      <RealExampleRefs />,
+      <LayoutEffect />,
    document.getElementById("root")
 );
