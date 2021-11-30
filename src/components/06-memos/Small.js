@@ -9,4 +9,4 @@ const Small = memo(({value}) => {
     )
 })
 
-export default Small
+export default Small;
