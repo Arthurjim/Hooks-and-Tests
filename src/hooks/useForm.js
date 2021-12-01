@@ -3,6 +3,11 @@ import  { useState } from "react";
 const useForm = (intialState = {}) => {
    const [values, setValues] = useState(intialState);
 
+   const reset = () => {
+      setValues(intialState);
+   }
+
+
    const handleInputChange = ({ target }) => {
       setValues({
            ...values, 
@@ -10,7 +15,7 @@ const useForm = (intialState = {}) => {
     });
    };
 
-    return [values, handleInputChange];
+    return [values, handleInputChange,reset];
 
 //forma más corta
 //    return [values, ({target})=>{
