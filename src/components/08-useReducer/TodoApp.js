@@ -1,8 +1,9 @@
 import React, { useReducer } from "react";
 import { todoReducer } from "./todoReducer";
 import "./styles.css";
-import useForm from "../../hooks/useForm";
 import { useEffect } from "react/cjs/react.development";
+import TodoList from "./TodoList";
+import TodoAdd from "./TodoAdd";
 // const initialState = [
 //     {
 //         id: new Date().getTime(),
@@ -22,29 +23,14 @@ const init = () => {
 const TodoApp = () => {
     //Initi ayuda para computar los datos y evitar que se este ejecutando el useReducer cada que haya cambios
     const [todos, dispatch] = useReducer(todoReducer, [], init);
-    const [{ description }, handleChange, reset] = useForm({
-        description: "",
-    });
+  
     useEffect(() => {
         localStorage.setItem("todos", JSON.stringify(todos));
     }, [todos]);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (description.trim().length < 1) {
-            return;
-        }
-        const newTodo = {
-            id: new Date().getTime(),
-            desc: description,
-            done: false,
-        };
-        const action = {
-            type: "ADD_TODO",
-            payload: newTodo,
-        };
-        dispatch(action);
-        reset();
+ 
+    const addTodo = (todo) => {
+        dispatch({ type: "ADD_TODO", payload: todo });
     };
     const handleToogle = (id) => {
         const action = {
@@ -65,47 +51,14 @@ const TodoApp = () => {
             <hr />
             <div className="row">
                 <div className="col-7">
-                    <ul className="list-group list-group-flush">
-                        {todos.map((item, i) => (
-                            <li className="list-group-item " key={item.id}>
-                                <p
-                                    className={item.done && "complete"}
-                                    onClick={() => handleToogle(item.id)}
-                                >
-                                    {" "}
-                                    {`${i + 1}. ${item.desc}`}
-                                </p>
-                                <button
-                                    className="btn btn-danger"
-                                    onClick={() => deleteTodo(item.id)}
-                                >
-                                    Borrar
-                                </button>
-                            </li>
-                        ))}
-                    </ul>
+                    <TodoList
+                        todos={todos}
+                        handleToogle={handleToogle}
+                        deleteTodo={deleteTodo}
+                    />
                 </div>
                 <div className="col-5">
-                    <h4>Agregar TODO</h4>
-                    <hr />
-                    <form onSubmit={handleSubmit}>
-                        <input
-                            type="text"
-                            className="form-control"
-                            name="description"
-                            placeholder="Aprenderr ..."
-                            autoComplete="off "
-                            onChange={handleChange}
-                            value={description}
-                            id="input"
-                        />
-                        <button
-                            type="submit"
-                            className="btn btn-outline-primary mt-1 col-12"
-                        >
-                            Agregar
-                        </button>
-                    </form>
+                    <TodoAdd addTodo={addTodo}/>
                 </div>
             </div>
         </div>
