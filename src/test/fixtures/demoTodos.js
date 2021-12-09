@@ -2,12 +2,12 @@ export const demoTodos = [
     {
         id: 1,
         desc: "Tareas",
-        donde: false,
+        done: false,
     },
     {
         id: 2,
         desc: "Aprender node",
-        donde: false,
+        done: false,
     },
 ]; 
 
@@ -16,6 +16,17 @@ export const actionAdd={
     payload:{
         id: 3,
         desc: "Terminar este maldito curso",
-        donde: false,
+        done: false,
     }
+}
+
+
+export const actionRemove={
+    type:'REMOVE_TODO',
+    payload:1
+}
+
+export const actionToogle={
+    type:'TOGGLE_TODO',
+    payload:1
 }
