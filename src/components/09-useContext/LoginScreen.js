@@ -1,5 +1,4 @@
 import React,{useContext} from 'react'
-import {Link} from 'react-router-dom'
 import { UserContext } from './UserContext'
 
 const LoginScreen = () => {
@@ -16,11 +15,9 @@ const LoginScreen = () => {
         <div>
             <h1>LoginScreen</h1>
             <hr/>
-              <Link to="/">
                 <button className="btn btn-primary" onClick={sendUser}>
                     Ingresar
                 </button>
-              </Link>
         </div>
     )
 }

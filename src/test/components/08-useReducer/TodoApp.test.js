@@ -3,7 +3,7 @@ import { act } from "@testing-library/react"
 import TodoApp from '../../../components/08-useReducer/TodoApp'
 import { demoTodos } from "../../fixtures/demoTodos"
 
-//Mount se utiliza cunado se necesita probar toda la aplicacion en general 
+//Mount se utiliza cunado se necesita renderizar todo en genreal
 
 describe('Pruebas en TodoApp', () => {
     const wrapper = shallow(<TodoApp />);
