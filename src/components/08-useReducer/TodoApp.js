@@ -47,7 +47,7 @@ const TodoApp = () => {
     };
     return (
         <div>
-            <h1>Todo App ({todos.length})</h1>
+            <h1>TodoApp {todos.length}</h1>
             <hr />
             <div className="row">
                 <div className="col-7">
